@@ -38,6 +38,7 @@ CRITIC_LOOKUP_API_KEY=""
 ```
 
 - `DATABASE_URL`: production Postgres connection string from Vercel Postgres, Neon, Supabase, Railway, or another hosted Postgres provider.
+- `DATABASE_URL_UNPOOLED`: direct Postgres connection string for Prisma migrations. If your provider only gives one URL, use the same value as `DATABASE_URL`; the Vercel build script also falls back to `DATABASE_URL` when this is not set.
 - `APP_PASSWORD`: password for the single-user login screen.
 - `SESSION_SECRET`: random value stored in the auth cookie after login.
 - `BLOB_READ_WRITE_TOKEN`: Vercel Blob token for label-photo uploads.
@@ -77,9 +78,10 @@ curl -H "Authorization: Bearer $CRON_SECRET" https://your-domain.com/api/cron/re
 1. Push this repository to GitHub, GitLab, or Bitbucket.
 2. Create a Vercel project from the repository.
 3. Add a hosted Postgres database and set `DATABASE_URL`.
-4. Create a Vercel Blob store and set `BLOB_READ_WRITE_TOKEN`.
-5. Add `APP_PASSWORD` and `SESSION_SECRET` in Vercel project settings.
-6. Deploy. Vercel uses `npm run vercel-build`, which runs:
+4. Set `DATABASE_URL_UNPOOLED` to the direct database URL, or to the same value as `DATABASE_URL` if your provider does not supply a separate direct URL.
+5. Create a Vercel Blob store and set `BLOB_READ_WRITE_TOKEN`.
+6. Add `APP_PASSWORD` and `SESSION_SECRET` in Vercel project settings.
+7. Deploy. Vercel uses `npm run vercel-build`, which runs:
 
 ```bash
 prisma generate && prisma migrate deploy && next build

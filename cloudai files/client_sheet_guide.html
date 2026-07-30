@@ -1,0 +1,220 @@
+<title>Using Your Wine Cellar Sheet</title>
+<style>
+  :root {
+    --ink: #221A17;
+    --paper: #F1ECE3;
+    --paper-raised: #E8E1D4;
+    --accent: #7A2635;
+    --accent-soft: rgba(122,38,53,0.10);
+    --gold: #A9812F;
+    --line: rgba(34,26,23,0.14);
+    --muted: rgba(34,26,23,0.62);
+    --green: #3F6B4A;
+    --green-soft: rgba(63,107,74,0.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #EFE6DC;
+      --paper: #1B1512;
+      --paper-raised: #251C18;
+      --accent: #E0919E;
+      --accent-soft: rgba(224,145,158,0.12);
+      --gold: #D8B168;
+      --line: rgba(239,230,220,0.14);
+      --muted: rgba(239,230,220,0.62);
+      --green: #8FBB9B;
+      --green-soft: rgba(143,187,155,0.14);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #EFE6DC; --paper: #1B1512; --paper-raised: #251C18;
+    --accent: #E0919E; --accent-soft: rgba(224,145,158,0.12);
+    --gold: #D8B168; --line: rgba(239,230,220,0.14); --muted: rgba(239,230,220,0.62);
+    --green: #8FBB9B; --green-soft: rgba(143,187,155,0.14);
+  }
+  :root[data-theme="light"] {
+    --ink: #221A17; --paper: #F1ECE3; --paper-raised: #E8E1D4;
+    --accent: #7A2635; --accent-soft: rgba(122,38,53,0.10);
+    --gold: #A9812F; --line: rgba(34,26,23,0.14); --muted: rgba(34,26,23,0.62);
+    --green: #3F6B4A; --green-soft: rgba(63,107,74,0.12);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 760px; margin: 0 auto; padding: 64px 28px 96px; }
+
+  .eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin: 0 0 14px;
+  }
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+    font-weight: 400; line-height: 1.15; margin: 0 0 10px; text-wrap: balance;
+  }
+  .lede {
+    font-size: 1.02rem; color: var(--muted); max-width: 58ch;
+    line-height: 1.55; margin: 0 0 32px;
+  }
+  .open-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: var(--paper);
+    text-decoration: none; font-weight: 600; font-size: 0.92rem;
+    padding: 11px 20px; border-radius: 5px; margin-bottom: 48px;
+  }
+  .open-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  h2.section {
+    font-family: Georgia, serif; font-weight: 400; font-size: 1.3rem;
+    margin: 0 0 4px;
+  }
+  .step-num {
+    color: var(--gold); font-family: Georgia, serif; font-variant-numeric: tabular-nums;
+  }
+  .section-note { color: var(--muted); font-size: 0.9rem; margin: 0 0 20px; }
+
+  section { margin-bottom: 48px; }
+
+  .tabs {
+    display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 600px) { .tabs { grid-template-columns: 1fr; } }
+  .tab-card {
+    background: var(--paper-raised); border: 1px solid var(--line);
+    border-radius: 6px; padding: 16px 18px;
+  }
+  .tab-card h3 {
+    font-family: Georgia, serif; font-weight: 400; font-size: 1rem; margin: 0 0 6px;
+  }
+  .tab-card p { margin: 0; color: var(--muted); font-size: 0.87rem; line-height: 1.5; }
+
+  ol.steps { margin: 0; padding: 0; list-style: none; counter-reset: step; }
+  ol.steps li {
+    counter-increment: step;
+    display: grid; grid-template-columns: 30px 1fr; gap: 14px;
+    padding: 12px 0; border-bottom: 1px solid var(--line);
+  }
+  ol.steps li:last-child { border-bottom: none; }
+  ol.steps li::before {
+    content: counter(step);
+    font-family: Georgia, serif; color: var(--gold); font-size: 1rem;
+  }
+  ol.steps p { margin: 0; line-height: 1.55; font-size: 0.95rem; }
+  ol.steps strong { color: var(--ink); }
+
+  .status-grid {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px;
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 13px; border-radius: 100px; font-size: 0.85rem; font-weight: 600;
+    background: var(--paper-raised); border: 1px solid var(--line);
+  }
+  .dot { width: 9px; height: 9px; border-radius: 50%; }
+  .dot.ready { background: var(--green); }
+  .dot.now { background: var(--accent); }
+  .dot.young { background: var(--gold); }
+  .dot.peak { background: var(--muted); }
+  .dot.out { background: var(--ink); opacity: 0.4; }
+
+  .tip {
+    background: var(--green-soft); border-left: 3px solid var(--green);
+    padding: 12px 16px; border-radius: 0 5px 5px 0; font-size: 0.9rem;
+    line-height: 1.55; margin-top: 16px;
+  }
+  .tip strong { color: var(--ink); }
+
+  .closing {
+    margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--line);
+  }
+  .closing p { color: var(--muted); line-height: 1.6; font-size: 0.95rem; max-width: 58ch; margin: 0 0 8px; }
+  .closing strong { color: var(--ink); }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Wine Cellar Workbook — How to Use It</p>
+  <h1>A quick guide to your cellar sheet</h1>
+  <p class="lede">
+    Nothing here requires spreadsheet experience. This walks through everything
+    you need for day-to-day use — adding a bottle, checking what's ready to
+    drink, and finding a wine again later.
+  </p>
+  <a class="open-link" href="https://docs.google.com/spreadsheets/d/1Vo4HLNfV5UpHABTcD3Y6KQ_tvVoA9UqQwzQCsMRRomU/edit?gid=171780296#gid=171780296" target="_blank" rel="noopener">Open your Wine Cellar Sheet →</a>
+
+  <section>
+    <h2 class="section">Three tabs, one purpose each</h2>
+    <p class="section-note">You'll see these along the bottom of the screen.</p>
+    <div class="tabs">
+      <div class="tab-card">
+        <h3>Dashboard</h3>
+        <p>Your at-a-glance view — what's ready to drink, what's coming up next year, and what's run out.</p>
+      </div>
+      <div class="tab-card">
+        <h3>Cellar</h3>
+        <p>The full list of every bottle you own. This is where new entries land and where you'll browse or search.</p>
+      </div>
+      <div class="tab-card">
+        <h3>Read Me</h3>
+        <p>Reference notes about how the sheet is organized, kept for whenever you need a reminder.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section">Adding a new bottle</h2>
+    <p class="section-note">No typing into the grid required — use the built-in form.</p>
+    <ol class="steps">
+      <li><p>At the top of the screen, click the <strong>🍷 Cellar</strong> menu (next to Help).</p></li>
+      <li><p>Choose <strong>Add Bottle…</strong> — a form pops up with a field for every detail: producer, vintage, region, quantity, drinking window, critic scores, and so on.</p></li>
+      <li><p>Fill in what you know. Only <strong>Producer</strong> and <strong>Wine Name</strong> are required — leave anything else blank and fill it in later.</p></li>
+      <li><p>Click <strong>Add to cellar</strong>. The bottle appears at the bottom of the Cellar tab, already dated and numbered — nothing else to do.</p></li>
+    </ol>
+    <div class="tip">
+      <strong>Pasting a review?</strong> Drop the full text into <strong>Reviews & Notes</strong> as-is, then put just the number in the matching score column (Halliday, RP, My Score, etc.) so you can sort by it later.
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section">Adding a label photo</h2>
+    <ol class="steps">
+      <li><p>Find or take a photo of the label and get a web link to it — the easiest way is uploading it to Google Drive, right-clicking the file, and choosing <strong>Share ▸ Copy link</strong> (set it to "Anyone with the link").</p></li>
+      <li><p>Paste that link into the <strong>Label Photo (URL)</strong> column, right next to the Photo column.</p></li>
+      <li><p>The photo appears automatically in the very first column — no need to resize or format anything.</p></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2 class="section">Reading the Drink Status colors</h2>
+    <p class="section-note">Each row is color-coded so you can tell a bottle's status without reading every column.</p>
+    <div class="status-grid">
+      <span class="chip"><span class="dot ready"></span>Ready</span>
+      <span class="chip"><span class="dot now"></span>Drink now</span>
+      <span class="chip"><span class="dot young"></span>Too young</span>
+      <span class="chip"><span class="dot peak"></span>Past peak</span>
+      <span class="chip"><span class="dot out"></span>Out of stock</span>
+    </div>
+    <div class="tip">
+      This updates itself — you never set it directly. It's calculated from today's date, the drinking window, and how many bottles are left.
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section">Finding a bottle again</h2>
+    <ol class="steps">
+      <li><p>On the Cellar tab, click any column header — a small arrow appears.</p></li>
+      <li><p>Click it to <strong>sort</strong> (e.g. by rating, highest first) or <strong>filter</strong> (e.g. show only Red wines, or only bottles from a certain producer).</p></li>
+      <li><p>To search by name, press <strong>Ctrl+F</strong> (or <strong>⌘+F</strong> on a Mac) and type what you're looking for.</p></li>
+    </ol>
+  </section>
+
+  <div class="closing">
+    <p><strong>That covers everyday use.</strong> You shouldn't need to touch anything beyond the 🍷 Cellar menu and the Cellar tab itself for normal day-to-day updates.</p>
+    <p>If anything looks off or you're unsure about a step, just message me — happy to walk through it together.</p>
+  </div>
+</div>

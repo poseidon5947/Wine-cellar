@@ -1,0 +1,1 @@
+ALTER TABLE "Bottle" ADD COLUMN "myNotes" TEXT;

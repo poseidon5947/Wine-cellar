@@ -1,0 +1,329 @@
+<title>Wine Cellar — What's Next</title>
+<style>
+  :root {
+    --ink: #221A17;
+    --paper: #F1ECE3;
+    --paper-raised: #E8E1D4;
+    --accent: #7A2635;
+    --accent-soft: rgba(122,38,53,0.10);
+    --gold: #A9812F;
+    --line: rgba(34,26,23,0.14);
+    --muted: rgba(34,26,23,0.62);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #EFE6DC;
+      --paper: #1B1512;
+      --paper-raised: #251C18;
+      --accent: #E0919E;
+      --accent-soft: rgba(224,145,158,0.12);
+      --gold: #D8B168;
+      --line: rgba(239,230,220,0.14);
+      --muted: rgba(239,230,220,0.62);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #EFE6DC;
+    --paper: #1B1512;
+    --paper-raised: #251C18;
+    --accent: #E0919E;
+    --accent-soft: rgba(224,145,158,0.12);
+    --gold: #D8B168;
+    --line: rgba(239,230,220,0.14);
+    --muted: rgba(239,230,220,0.62);
+  }
+  :root[data-theme="light"] {
+    --ink: #221A17;
+    --paper: #F1ECE3;
+    --paper-raised: #E8E1D4;
+    --accent: #7A2635;
+    --accent-soft: rgba(122,38,53,0.10);
+    --gold: #A9812F;
+    --line: rgba(34,26,23,0.14);
+    --muted: rgba(34,26,23,0.62);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 28px 96px;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+  .lede {
+    font-size: 1.02rem;
+    color: var(--muted);
+    max-width: 56ch;
+    line-height: 1.55;
+    margin: 0 0 40px;
+  }
+
+  .state {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 22px 26px;
+    margin-bottom: 56px;
+  }
+  .state h2 {
+    font-family: Georgia, serif;
+    font-weight: 400;
+    font-size: 1.05rem;
+    margin: 0 0 8px;
+  }
+  .state p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  h2.section {
+    font-family: Georgia, serif;
+    font-weight: 400;
+    font-size: 1.35rem;
+    margin: 0 0 6px;
+  }
+  .section-note {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0 0 32px;
+  }
+
+  .rail {
+    position: relative;
+    padding-left: 44px;
+  }
+  .rail::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: var(--line);
+  }
+  .phase {
+    position: relative;
+    padding-bottom: 40px;
+  }
+  .phase:last-child { padding-bottom: 0; }
+  .phase-num {
+    position: absolute;
+    left: -44px;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: Georgia, serif;
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .phase-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+  .phase-title {
+    font-family: Georgia, serif;
+    font-size: 1.12rem;
+    font-weight: 400;
+  }
+  .phase-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 2px 9px;
+    border-radius: 100px;
+  }
+  .phase-why {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin: 0 0 16px;
+    line-height: 1.5;
+    max-width: 56ch;
+  }
+  .features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .feature {
+    display: grid;
+    grid-template-columns: 168px 1fr;
+    gap: 16px;
+    padding: 12px 16px;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+  }
+  .feature-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .feature-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  @media (max-width: 520px) {
+    .feature { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  .closing {
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .closing h2 {
+    font-family: Georgia, serif;
+    font-weight: 400;
+    font-size: 1.15rem;
+    margin: 0 0 10px;
+  }
+  .closing p {
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    max-width: 58ch;
+    margin: 0 0 10px;
+  }
+  .closing strong { color: var(--ink); }
+
+  .signoff {
+    margin-top: 44px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Wine Cellar Workbook — Roadmap</p>
+  <h1>Where the cellar tool stands, and where it can go</h1>
+  <p class="lede">
+    The workbook is live and ready for day-to-day use. Below is a short
+    outline of what's built, and a set of options for what we could add
+    next as the collection grows.
+  </p>
+
+  <div class="state">
+    <h2>Currently in place</h2>
+    <p>
+      A full catalogue for roughly 1,200 bottles — label photo, producer,
+      vintage, region, drinking window, critic scores, and storage location —
+      with dropdown validation to keep entries tidy, a dashboard that
+      automatically surfaces what's ready to drink, what's coming into
+      its window next year, and what's out of stock, and a quick pop-up
+      form for adding new bottles without touching the spreadsheet directly.
+    </p>
+  </div>
+
+  <h2 class="section">Proposed next steps</h2>
+  <p class="section-note">Ordered by how directly each builds on the last.</p>
+
+  <div class="rail">
+    <div class="phase">
+      <div class="phase-num">1</div>
+      <div class="phase-head">
+        <span class="phase-title">Everyday usability</span>
+        <span class="phase-tag">Quick win</span>
+      </div>
+      <p class="phase-why">Small additions that remove manual upkeep from the routine you already have.</p>
+      <div class="features">
+        <div class="feature">
+          <div class="feature-name">Consumption log</div>
+          <div class="feature-desc">A "drink a bottle" action that updates the count and quietly keeps a history of what was opened and when.</div>
+        </div>
+        <div class="feature">
+          <div class="feature-name">Window reminders</div>
+          <div class="feature-desc">A monthly note by email listing what's entering or leaving its drinking window — no need to check the sheet.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-num">2</div>
+      <div class="phase-head">
+        <span class="phase-title">Capture at the point of purchase</span>
+      </div>
+      <p class="phase-why">Logging a bottle the moment it arrives, rather than catching up later.</p>
+      <div class="features">
+        <div class="feature">
+          <div class="feature-name">Mobile entry</div>
+          <div class="feature-desc">A phone-friendly form to log a new bottle and snap its label photo on the spot.</div>
+        </div>
+        <div class="feature">
+          <div class="feature-name">Shelf labels</div>
+          <div class="feature-desc">A printable code per bottle that opens straight to its record — handy for a quick shelf check.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-num">3</div>
+      <div class="phase-head">
+        <span class="phase-title">Richer data, less typing</span>
+      </div>
+      <p class="phase-why">Once the basics are second nature, the sheet can start doing more of the work itself.</p>
+      <div class="features">
+        <div class="feature">
+          <div class="feature-name">Critic score lookup</div>
+          <div class="feature-desc">Pull published scores automatically by producer and vintage, where available.</div>
+        </div>
+        <div class="feature">
+          <div class="feature-name">Value tracking</div>
+          <div class="feature-desc">A running estimate of the cellar's current worth, not just what was originally paid.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <h2>A place to start</h2>
+    <p>
+      I'd suggest beginning with the <strong>consumption log</strong> — it's
+      the fastest to add, immediately useful, and sets up mobile entry
+      naturally as a follow-on.
+    </p>
+    <p>
+      Happy to scope any of these individually, or set a quarterly check-in
+      to keep things running smoothly as the collection grows.
+    </p>
+  </div>
+
+  <p class="signoff">Let me know which direction is most useful and I'll put together an estimate.</p>
+</div>

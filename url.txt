@@ -1,0 +1,69 @@
+https://docs.google.com/spreadsheets/d/1ArXxrDfgiYrGyLLQVwGfAg5u_VZkC9cdSiaQZAkhk7s/edit?gid=398491599#gid=398491599
+
+
+Setting up the Apps Script — step by step
+1. Import the workbook into Google Sheets
+
+Go to sheets.google.com → Blank spreadsheet
+File ▸ Import ▸ Upload ▸ select wine_cellar_SAMPLE.xlsx
+Choose Insert new sheet(s) (keeps Dashboard, Cellar, Read Me as tabs) → Import data
+2. Open the Apps Script editor
+
+In the imported sheet: Extensions ▸ Apps Script
+A new tab opens with a default Code.gs containing an empty myFunction(){}
+3. Paste in the script
+
+Select all the default content in the editor (Ctrl+A) and delete it
+Open Code.gs in your editor here, copy everything, paste it into the Apps Script editor
+Click the project name at top-left ("Untitled project") and rename it, e.g. "Wine Cellar Script"
+Save with Ctrl+S (or the disk icon)
+4. Enable the Sheets API advanced service (only needed for "Rebuild Filter Views" — skip if you just want the form/timestamps)
+
+In the Apps Script editor, left sidebar ▸ Services ▸ click the +
+Find Google Sheets API ▸ Add
+It'll appear in the sidebar as Sheets
+5. Run it once to authorize
+
+Back in the Apps Script editor, top toolbar dropdown next to Run ▸ select onOpen
+Click Run
+A popup asks for authorization → Review permissions → pick your Google account → you'll see an "unverified app" warning (normal for your own script) → Advanced ▸ Go to Wine Cellar Script (unsafe) ▸ Allow
+6. Go back to the spreadsheet tab and reload it
+
+Refresh the browser tab with your Sheet
+A new menu 🍷 Cellar appears next to Help
+7. Try it out
+
+🍷 Cellar ▸ Add Bottle… — fill the form, click "Add to cellar", check it lands on the Cellar tab with ID and Last Updated auto-filled
+🍷 Cellar ▸ Rebuild dropdowns — reapplies the Type/Bottle Size/Country/Status/Rating validation
+🍷 Cellar ▸ Rebuild Filter Views — creates the three native filter views (only if step 4 was done)
+That's it — the script is bound to this specific spreadsheet, so it'll auto-run onOpen (showing the menu) every time you open the file from now on, no re-setup needed.
+
+
+-----------------------------
+A few directions, grouped by effort and how they extend the relationship:
+
+Feature add-ons to this same Sheet (low effort, easy incremental billing)
+
+Consumption log — a small "Drink a bottle" menu action that decrements Quantity and logs date/occasion to a History tab, instead of manually editing
+Drinking-window email reminders — a time-based trigger that emails the client monthly with what's entering/leaving its window
+QR/barcode label generator — auto-generate a QR code per bottle (linking to its row) they can print and stick on the bottle for fast lookup
+Photo capture from phone — a Google Form front-end (feeds the same sheet) so they can snap a label photo and enter a bottle from their phone at the point of purchase, no desktop needed
+Integrations (medium effort, more "wow" factor)
+
+Auto-pull critic scores from Wine-Searcher/Vivino by producer+vintage (script call to their API if available) instead of manual entry
+Market value tracking — periodic price lookup so the Dashboard shows current cellar value vs purchase price, not just purchase price
+Looker Studio (free, Google-native) dashboard on top of the Sheet for a nicer visual layer than in-sheet charts
+Platform growth (bigger engagement, natural "graduation" project)
+
+If the cellar outgrows Sheets (multi-user conflicts, needs real accounts/roles, faster search across 1,200+ rows) — migrate to a small web app (Apps Script Web App, or a proper app with a real database) with the Sheet as import/export, not source of truth
+Relationship/service options (non-technical, recurring revenue)
+
+Quarterly "cellar health check" — dedupe, fix broken image links, validate data, tidy formulas
+Support retainer — small monthly fee for bug fixes/tweaks as they use it
+Short training/handoff call or screen-recording walkthrough
+I'd start with the consumption log + drinking-window email reminders — both are quick, visibly useful, and set up the next few asks (photo-from-phone, integrations) as a natural roadmap conversation rather than a single big pitch. Want me to build one of these now?
+
+-----------------
+https://docs.google.com/spreadsheets/d/1Vo4HLNfV5UpHABTcD3Y6KQ_tvVoA9UqQwzQCsMRRomU/edit?gid=171780296#gid=171780296
+
+https://www.freelancer.com/u/sanddep5

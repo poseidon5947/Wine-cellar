@@ -1,0 +1,44 @@
+
+https://docs.google.com/spreadsheets/d/1Vo4HLNfV5UpHABTcD3Y6KQ_tvVoA9UqQwzQCsMRRomU/edit?gid=171780296#gid=171780296
+Setting up the Apps Script — step by step
+1. Import the workbook into Google Sheets
+
+Go to sheets.google.com → Blank spreadsheet
+File ▸ Import ▸ Upload ▸ select wine_cellar_SAMPLE.xlsx
+Choose Insert new sheet(s) (keeps Dashboard, Cellar, Read Me as tabs) → Import data
+2. Open the Apps Script editor
+
+In the imported sheet: Extensions ▸ Apps Script
+A new tab opens with a default Code.gs containing an empty myFunction(){}
+3. Paste in the script
+
+Select all the default content in the editor (Ctrl+A) and delete it
+Open Code.gs in your editor here, copy everything, paste it into the Apps Script editor
+Click the project name at top-left ("Untitled project") and rename it, e.g. "Wine Cellar Script"
+Save with Ctrl+S (or the disk icon)
+4. Enable the Sheets API advanced service (only needed for "Rebuild Filter Views" — skip if you just want the form/timestamps)
+
+In the Apps Script editor, left sidebar ▸ Services ▸ click the +
+Find Google Sheets API ▸ Add
+It'll appear in the sidebar as Sheets
+5. Run it once to authorize
+
+Back in the Apps Script editor, top toolbar dropdown next to Run ▸ select onOpen
+Click Run
+A popup asks for authorization → Review permissions → pick your Google account → you'll see an "unverified app" warning (normal for your own script) → Advanced ▸ Go to Wine Cellar Script (unsafe) ▸ Allow
+6. Go back to the spreadsheet tab and reload it
+
+Refresh the browser tab with your Sheet
+A new menu 🍷 Cellar appears next to Help
+7. Try it out
+
+🍷 Cellar ▸ Add Bottle… — fill the form, click "Add to cellar", check it lands on the Cellar tab with ID and Last Updated auto-filled
+🍷 Cellar ▸ Rebuild dropdowns — reapplies the Type/Bottle Size/Country/Status/Rating validation
+🍷 Cellar ▸ Rebuild Filter Views — creates the three native filter views (only if step 4 was done)
+That's it — the script is bound to this specific spreadsheet, so it'll auto-run onOpen (showing the menu) every time you open the file from now on, no re-setup needed.
+
+
+-----------------------------
+-----------------
+
+https://wine-cellar-theta-two.vercel.app/import

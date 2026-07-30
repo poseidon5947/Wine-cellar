@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Bottle {
+  id                  String           @id @default(cuid())
+  photoUrl            String?
+  producer            String
+  wineName            String
+  vintage             String?
+  type                String           @default("Red")
+  grapes              String?
+  region              String?
+  country             String?
+  alcoholPercent      Float?
+  bottleSize          String           @default("750ml")
+  quantity            Int              @default(0)
+  storageLocation     String?
+  purchaseDate        DateTime?
+  purchasePrice       Float?
+  drinkingWindowStart Int?
+  drinkingWindowEnd   Int?
+  status              String           @default("In Cellar")
+  personalRating      Int?
+  notes               String?
+  myNotes             String?
+  hallidayScore       Int?
+  hookScore           Int?
+  rpScore             Int?
+  larkinScore         Int?
+  myScore             Int?
+  others              String?
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+  consumptionLogs     ConsumptionLog[]
+  photos              BottlePhoto[]
+
+  @@index([producer])
+  @@index([wineName])
+  @@index([vintage])
+  @@index([type])
+  @@index([quantity])
+  @@index([drinkingWindowStart, drinkingWindowEnd])
+}
+
+model ConsumptionLog {
+  id        String   @id @default(cuid())
+  bottleId  String
+  date      DateTime @default(now())
+  quantity  Int      @default(1)
+  note      String?
+  bottle    Bottle   @relation(fields: [bottleId], references: [id], onDelete: Cascade)
+
+  @@index([bottleId])
+  @@index([date])
+}
+
+model BottlePhoto {
+  id        String   @id @default(cuid())
+  bottleId  String
+  url       String
+  position  Int      @default(0)
+  createdAt DateTime @default(now())
+  bottle    Bottle   @relation(fields: [bottleId], references: [id], onDelete: Cascade)
+
+  @@index([bottleId])
+  @@index([position])
+}

@@ -5,7 +5,7 @@ const http = require("node:http");
 const net = require("node:net");
 const path = require("node:path");
 
-const DEFAULT_APP_URL = "https://wine-cellar-kr120jl49-coinspring.vercel.app";
+const DEFAULT_APP_URL = "https://wine-cellar-eight-roan.vercel.app/";
 let serverProcess = null;
 
 function getAppUrl() {

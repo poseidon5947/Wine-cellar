@@ -52,7 +52,7 @@ export function LoginForm() {
           <button
             type="button"
             className="absolute right-3 top-1/2 -translate-y-1/2 transition-colors duration-200"
-            style={{ color: "#8a7080" }}
+            style={{ color: "#6a9080" }}
             onClick={() => setShowPassword((v) => !v)}
             tabIndex={-1}
           >
@@ -67,7 +67,7 @@ export function LoginForm() {
           style={{
             background: "rgba(239, 68, 68, 0.12)",
             border: "1px solid rgba(239, 68, 68, 0.3)",
-            color: "#fca5a5"
+            color: "#b91c1c"
           }}
         >
           {error}

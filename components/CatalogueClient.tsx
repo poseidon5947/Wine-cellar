@@ -196,7 +196,7 @@ export function CatalogueClient() {
       <section className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <span className="label">Inventory</span>
-          <h1 className="mt-1 font-display text-4xl font-bold" style={{ color: "#f5f0e8" }}>Wine Catalogue</h1>
+          <h1 className="mt-1 font-display text-4xl font-bold" style={{ color: "#1a2e28" }}>Wine Catalogue</h1>
           <div className="mt-2 h-0.5 w-16" style={{ background: "linear-gradient(90deg, #8b1a1a, transparent)" }} />
         </div>
         <div className="flex flex-wrap items-center gap-2">
@@ -217,7 +217,7 @@ export function CatalogueClient() {
         <div className="grid gap-3 md:grid-cols-[2fr_1fr_1fr_1fr]">
           <label className="relative block">
             <span className="label">Search</span>
-            <Search className="pointer-events-none absolute left-3 top-[2.15rem]" size={15} style={{ color: "#8a7080" }} />
+            <Search className="pointer-events-none absolute left-3 top-[2.15rem]" size={15} style={{ color: "#6a9080" }} />
             <input className="field mt-1.5 pl-9" placeholder="Producer, wine, notes…" value={filters.search} onChange={(e) => updateFilter("search", e.target.value)} />
           </label>
           <FilterInput label="Producer" value={filters.producer} onChange={(v) => updateFilter("producer", v)} />
@@ -232,11 +232,11 @@ export function CatalogueClient() {
         </div>
 
         <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
-          <div className="inline-flex rounded-lg p-1" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)" }}>
+          <div className="inline-flex rounded-lg p-1" style={{ background: "rgba(255,255,255,0.7)", border: "1px solid rgba(80,160,130,0.2)" }}>
             <button
               type="button"
               className="inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm transition-colors duration-150"
-              style={{ color: viewMode === "all" ? "#f5f0e8" : "#8a7080", background: viewMode === "all" ? "rgba(212,175,55,0.12)" : "transparent" }}
+              style={{ color: viewMode === "all" ? "#1a2e28" : "#6a9080", background: viewMode === "all" ? "rgba(58,112,96,0.12)" : "transparent" }}
               onClick={() => changeViewMode("all")}
             >
               <Wine size={14} />All bottles
@@ -244,7 +244,7 @@ export function CatalogueClient() {
             <button
               type="button"
               className="inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm transition-colors duration-150"
-              style={{ color: viewMode === "grouped" ? "#f5f0e8" : "#8a7080", background: viewMode === "grouped" ? "rgba(212,175,55,0.12)" : "transparent" }}
+              style={{ color: viewMode === "grouped" ? "#1a2e28" : "#6a9080", background: viewMode === "grouped" ? "rgba(58,112,96,0.12)" : "transparent" }}
               onClick={() => changeViewMode("grouped")}
             >
               <Layers2 size={14} />Grouped by wine
@@ -253,7 +253,7 @@ export function CatalogueClient() {
           <div className="flex flex-wrap items-center gap-3">
             <button
               className="inline-flex items-center gap-2 text-sm transition-colors duration-150"
-              style={{ color: showAdvanced ? "#d4af37" : "#8a7080" }}
+              style={{ color: showAdvanced ? "#3a7060" : "#6a9080" }}
               onClick={() => setShowAdvanced((v) => !v)}
             >
               <SlidersHorizontal size={14} />
@@ -269,7 +269,7 @@ export function CatalogueClient() {
         </div>
 
         {showAdvanced && (
-          <div className="mt-4 space-y-3 border-t pt-4" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+          <div className="mt-4 space-y-3 border-t pt-4" style={{ borderColor: "rgba(80,160,130,0.2)" }}>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
               <FilterInput label="Vintage" value={filters.vintage} onChange={(v) => updateFilter("vintage", v)} />
               <FilterInput label="Region" value={filters.region} onChange={(v) => updateFilter("region", v)} />
@@ -293,7 +293,7 @@ export function CatalogueClient() {
       {/* Toast */}
       {message && (
         <div className="flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-medium"
-          style={{ background: "rgba(212,175,55,0.12)", border: "1px solid rgba(212,175,55,0.3)", color: "#fde68a" }}>
+          style={{ background: "rgba(58,112,96,0.12)", border: "1px solid rgba(58,112,96,0.3)", color: "#1a4a3a" }}>
           {message}
         </div>
       )}
@@ -303,7 +303,7 @@ export function CatalogueClient() {
           <div className="flex flex-wrap items-end gap-3">
             <div className="mr-auto">
               <span className="label">Bulk actions</span>
-              <p className="mt-1 text-sm" style={{ color: "#f5f0e8" }}>{selectedIds.length} selected</p>
+              <p className="mt-1 text-sm" style={{ color: "#1a2e28" }}>{selectedIds.length} selected</p>
             </div>
             <label className="block min-w-[180px]">
               <span className="label">Status</span>
@@ -328,15 +328,15 @@ export function CatalogueClient() {
 
       {/* Table card */}
       <Card overflow>
-        <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 text-sm" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-          <span style={{ color: "#b09aa8" }}>
+        <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 text-sm" style={{ borderBottom: "1px solid rgba(80,160,130,0.2)" }}>
+          <span style={{ color: "#4a7060" }}>
             {activeData
-              ? <><span className="font-bold" style={{ color: "#f5f0e8" }}>{activeData.total.toLocaleString()}</span> {viewMode === "grouped" ? "grouped wines" : "wines"}</>
+              ? <><span className="font-bold" style={{ color: "#1a2e28" }}>{activeData.total.toLocaleString()}</span> {viewMode === "grouped" ? "grouped wines" : "wines"}</>
               : "Loading…"}
           </span>
           {loading && (
-            <span className="flex items-center gap-2 text-xs" style={{ color: "#8a7080" }}>
-              <div className="h-3.5 w-3.5 rounded-full border border-t-transparent animate-spin" style={{ borderColor: "rgba(139,26,26,0.4)", borderTopColor: "#8b1a1a" }} />
+            <span className="flex items-center gap-2 text-xs" style={{ color: "#6a9080" }}>
+              <div className="h-3.5 w-3.5 rounded-full border border-t-transparent animate-spin" style={{ borderColor: "rgba(80,160,130,0.2)", borderTopColor: "#3a7060" }} />
               Refreshing
             </span>
           )}
@@ -370,24 +370,24 @@ export function CatalogueClient() {
                     <input type="checkbox" checked={selectedIds.includes(b.id)} onChange={() => toggleSelected(b.id)} aria-label={`Select ${b.producer} ${b.wineName}`} />
                   </td>
                   <td className="px-5 py-3"><Thumb url={b.photoUrl} /></td>
-                  <td className="px-3 py-3 font-semibold" style={{ color: "#f5f0e8" }}>{b.producer}</td>
-                  <td className="px-3 py-3" style={{ color: "#b09aa8" }}>{b.wineName}</td>
-                  <td className="px-3 py-3" style={{ color: "#8a7080" }}>{b.vintage || "—"}</td>
-                  <td className="px-3 py-3" style={{ color: "#b09aa8" }}>{b.type}</td>
+                  <td className="px-3 py-3 font-semibold" style={{ color: "#1a2e28" }}>{b.producer}</td>
+                  <td className="px-3 py-3" style={{ color: "#4a7060" }}>{b.wineName}</td>
+                  <td className="px-3 py-3" style={{ color: "#6a9080" }}>{b.vintage || "—"}</td>
+                  <td className="px-3 py-3" style={{ color: "#4a7060" }}>{b.type}</td>
                   <td className="px-3 py-3">
                     <span className="inline-flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold"
-                      style={{ background: "rgba(139,26,26,0.2)", color: "#f5f0e8", border: "1px solid rgba(139,26,26,0.4)" }}>
+                      style={{ background: "rgba(139,26,26,0.12)", color: "#6b1212", border: "1px solid rgba(139,26,26,0.3)" }}>
                       {b.quantity}
                     </span>
                   </td>
-                  <td className="px-3 py-3 text-xs" style={{ color: "#8a7080" }}>{b.drinkingWindow}</td>
+                  <td className="px-3 py-3 text-xs" style={{ color: "#6a9080" }}>{b.drinkingWindow}</td>
                   <td className="px-3 py-3">
                     {b.personalRating
-                      ? <span className="font-bold" style={{ color: "#d4af37" }}>{b.personalRating}</span>
-                      : <span style={{ color: "#5a4550" }}>—</span>}
+                      ? <span className="font-bold" style={{ color: "#3a7060" }}>{b.personalRating}</span>
+                      : <span style={{ color: "#8aaa9a" }}>—</span>}
                   </td>
                   <td className="px-3 py-3"><StatusChip status={b.drinkStatus} /></td>
-                  <td className="px-3 py-3 text-xs" style={{ color: "#5a4550" }}>
+                  <td className="px-3 py-3 text-xs" style={{ color: "#8aaa9a" }}>
                     <div>H {b.hallidayScore ?? "—"} · Hk {b.hookScore ?? "—"}</div>
                     <div>RP {b.rpScore ?? "—"} · L {b.larkinScore ?? "—"} · My {b.myScore ?? "—"}</div>
                   </td>
@@ -399,7 +399,7 @@ export function CatalogueClient() {
                 </tr>
               )) : (
                 <tr>
-                  <td colSpan={12} className="px-5 py-12 text-center text-sm" style={{ color: "#5a4550" }}>
+                  <td colSpan={12} className="px-5 py-12 text-center text-sm" style={{ color: "#8aaa9a" }}>
                     No bottles match the current filters.
                   </td>
                 </tr>
@@ -411,13 +411,13 @@ export function CatalogueClient() {
           <GroupedCatalogueTable rows={groupedData?.rows || []} onOpen={(id) => router.push(`/bottles/${id}`)} />
         )}
 
-        <div className="flex items-center justify-between px-5 py-3.5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+        <div className="flex items-center justify-between px-5 py-3.5" style={{ borderTop: "1px solid rgba(80,160,130,0.2)" }}>
           <button className="btn-secondary" disabled={page <= 1} onClick={() => setPage((c) => Math.max(c - 1, 1))}>
             <ChevronLeft size={15} />Previous
           </button>
-          <span className="text-sm" style={{ color: "#8a7080" }}>
-            Page <span className="font-semibold" style={{ color: "#f5f0e8" }}>{activeData?.page ?? page}</span>
-            {" "}of <span className="font-semibold" style={{ color: "#f5f0e8" }}>{activeData?.pages ?? 1}</span>
+          <span className="text-sm" style={{ color: "#6a9080" }}>
+            Page <span className="font-semibold" style={{ color: "#1a2e28" }}>{activeData?.page ?? page}</span>
+            {" "}of <span className="font-semibold" style={{ color: "#1a2e28" }}>{activeData?.pages ?? 1}</span>
           </span>
           <button className="btn-secondary" disabled={!activeData || page >= activeData.pages} onClick={() => setPage((c) => c + 1)}>
             Next<ChevronRight size={15} />
@@ -445,13 +445,13 @@ function GroupedCatalogueTable({ rows, onOpen }: { rows: GroupedBottleRow[]; onO
         <tbody>
           {rows.length ? rows.map((row) => (
             <tr key={`${row.producer}-${row.wineName}-${row.vintage || "nv"}`}>
-              <td className="px-5 py-4 font-semibold" style={{ color: "#f5f0e8" }}>{row.producer}</td>
-              <td className="px-3 py-4" style={{ color: "#b09aa8" }}>{row.wineName}</td>
-              <td className="px-3 py-4" style={{ color: "#8a7080" }}>{row.vintage || "-"}</td>
-              <td className="px-3 py-4" style={{ color: "#b09aa8" }}>{row.type}</td>
+              <td className="px-5 py-4 font-semibold" style={{ color: "#1a2e28" }}>{row.producer}</td>
+              <td className="px-3 py-4" style={{ color: "#4a7060" }}>{row.wineName}</td>
+              <td className="px-3 py-4" style={{ color: "#6a9080" }}>{row.vintage || "-"}</td>
+              <td className="px-3 py-4" style={{ color: "#4a7060" }}>{row.type}</td>
               <td className="px-3 py-4">
                 <span className="inline-flex h-8 min-w-8 items-center justify-center rounded-full px-2 text-xs font-bold"
-                  style={{ background: "rgba(212,175,55,0.12)", color: "#f5f0e8", border: "1px solid rgba(212,175,55,0.28)" }}>
+                  style={{ background: "rgba(58,112,96,0.12)", color: "#1a2e28", border: "1px solid rgba(58,112,96,0.28)" }}>
                   {row.quantity}
                 </span>
               </td>
@@ -461,12 +461,12 @@ function GroupedCatalogueTable({ rows, onOpen }: { rows: GroupedBottleRow[]; onO
                     <button
                       key={location.id}
                       type="button"
-                      className="rounded-lg px-3 py-2 text-left text-xs transition-colors duration-150 hover:bg-white/5"
-                      style={{ color: "#f5f0e8", border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)" }}
+                      className="rounded-lg px-3 py-2 text-left text-xs transition-colors duration-150 hover:bg-white/30"
+                      style={{ color: "#1a2e28", border: "1px solid rgba(80,160,130,0.2)", background: "rgba(255,255,255,0.7)" }}
                       onClick={() => onOpen(location.id)}
                     >
                       <span className="block font-semibold">{location.storageLocation || "Unassigned"}</span>
-                      <span style={{ color: "#8a7080" }}>{location.quantity} bottle{location.quantity === 1 ? "" : "s"}</span>
+                      <span style={{ color: "#6a9080" }}>{location.quantity} bottle{location.quantity === 1 ? "" : "s"}</span>
                     </button>
                   ))}
                 </div>
@@ -474,7 +474,7 @@ function GroupedCatalogueTable({ rows, onOpen }: { rows: GroupedBottleRow[]; onO
             </tr>
           )) : (
             <tr>
-              <td colSpan={6} className="px-5 py-12 text-center text-sm" style={{ color: "#5a4550" }}>
+              <td colSpan={6} className="px-5 py-12 text-center text-sm" style={{ color: "#8aaa9a" }}>
                 No grouped wines match the current filters.
               </td>
             </tr>
@@ -499,7 +499,7 @@ function Sortable({ label, field, sortBy, sortDir, onSort }: { label: string; fi
   return (
     <th className="px-3 py-3">
       <button className="inline-flex items-center gap-1 font-semibold uppercase tracking-wide text-xs transition-colors duration-150"
-        style={{ color: active ? "#d4af37" : "#9a7c22" }} onClick={() => onSort(field)}>
+        style={{ color: active ? "#3a7060" : "#4a8070" }} onClick={() => onSort(field)}>
         {label}
         {active && (sortDir === "asc" ? <ArrowUp size={11} /> : <ArrowDown size={11} />)}
       </button>
@@ -510,7 +510,7 @@ function Sortable({ label, field, sortBy, sortDir, onSort }: { label: string; fi
 function Thumb({ url }: { url: string | null }) {
   if (!url) return (
     <div className="flex h-14 w-11 items-center justify-center rounded-lg text-xs"
-      style={{ background: "rgba(255,255,255,0.04)", color: "#5a4550", border: "1px solid rgba(255,255,255,0.06)" }}>—</div>
+      style={{ background: "rgba(255,255,255,0.7)", color: "#8aaa9a", border: "1px solid rgba(80,160,130,0.2)" }}>—</div>
   );
-  return <img src={url} alt="" className="h-14 w-11 rounded-lg object-cover" style={{ border: "1px solid rgba(255,255,255,0.08)" }} />;
+  return <img src={url} alt="" className="h-14 w-11 rounded-lg object-cover" style={{ border: "1px solid rgba(80,160,130,0.2)" }} />;
 }

@@ -40,8 +40,8 @@ export function DashboardClient() {
       <div className="flex items-center justify-center py-32">
         <div className="text-center">
           <div className="mx-auto mb-4 h-12 w-12 rounded-full border-2 border-t-transparent animate-spin"
-            style={{ borderColor: "rgba(139,26,26,0.3)", borderTopColor: "#8b1a1a" }} />
-          <p className="text-sm" style={{ color: "#8a7080" }}>Loading cellar…</p>
+            style={{ borderColor: "rgba(80,160,130,0.2)", borderTopColor: "#3a7060" }} />
+          <p className="text-sm" style={{ color: "#6a9080" }}>Loading cellar…</p>
         </div>
       </div>
     );
@@ -49,7 +49,7 @@ export function DashboardClient() {
 
   if (!data) return (
     <div className="rounded-xl px-6 py-4 text-sm"
-      style={{ background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.3)", color: "#fca5a5" }}>
+      style={{ background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.3)", color: "#b91c1c" }}>
       Unable to load the dashboard.
     </div>
   );
@@ -66,7 +66,7 @@ export function DashboardClient() {
       <section className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <span className="label">Overview</span>
-          <h1 className="mt-1 font-display text-4xl font-bold" style={{ color: "#f5f0e8" }}>Cellar Dashboard</h1>
+          <h1 className="mt-1 font-display text-4xl font-bold" style={{ color: "#1a2e28" }}>Cellar Dashboard</h1>
           <div className="mt-2 h-0.5 w-16" style={{ background: "linear-gradient(90deg, #8b1a1a, transparent)" }} />
         </div>
         <Link href="/bottles/new" className="btn-primary">
@@ -119,15 +119,15 @@ export function DashboardClient() {
             <div className="mt-3 space-y-1.5">
               {data.kpis.typeCounts.map((item) => (
                 <div key={item.type} className="grid grid-cols-[72px_1fr_28px] items-center gap-3 text-sm">
-                  <span className="truncate" style={{ color: "#b09aa8" }}>{item.type}</span>
-                  <div className="h-1.5 overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.06)" }}>
+                  <span className="truncate" style={{ color: "#4a7060" }}>{item.type}</span>
+                  <div className="h-1.5 overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.7)" }}>
                     <div className="h-full rounded-full" style={{
                       width: `${item.count ? Math.max((item.count / maxTypeCount) * 100, 8) : 0}%`,
                       background: typeColor(item.type),
                       boxShadow: `0 0 16px ${typeColor(item.type)}66`
                     }} />
                   </div>
-                  <span className="text-right font-bold tabular-nums" style={{ color: "#f5f0e8" }}>{item.count}</span>
+                  <span className="text-right font-bold tabular-nums" style={{ color: "#1a2e28" }}>{item.count}</span>
                 </div>
               ))}
             </div>
@@ -137,7 +137,7 @@ export function DashboardClient() {
 
       <section className="grid gap-6 xl:grid-cols-3">
         <CompactList title="Ready to drink" subtitle="Now" bottles={data.lists.ready} accentColor="#22c55e" />
-        <CompactList title="Entering window" subtitle="Next year" bottles={data.lists.nextYear} accentColor="#d4af37" />
+        <CompactList title="Entering window" subtitle="Next year" bottles={data.lists.nextYear} accentColor="#3a7060" />
         <CompactList title="Restock / archive" subtitle="Action needed" bottles={data.lists.restock} accentColor="#ef4444" />
       </section>
 
@@ -147,7 +147,7 @@ export function DashboardClient() {
           title="Spend by year"
           rows={data.kpis.spendByYear.map((item) => ({ label: item.year, value: item.value, display: currency(item.value) }))}
           empty="Add purchase dates and prices to build this trend."
-          accent="#d4af37"
+          accent="#3a7060"
         />
         <AnalyticsCard
           icon={<MapPinned size={17} />}
@@ -230,15 +230,15 @@ function KpiCard({ icon, label, value, formatAs, accent, graphLabel, graphValue,
         <div className="mb-3 flex items-center gap-2.5" style={{ color: accent }}>
           {icon}<span className="label">{label}</span>
         </div>
-        <div className="font-display text-3xl font-bold tabular-nums" style={{ color: "#f5f0e8" }}>{displayValue}</div>
+        <div className="font-display text-3xl font-bold tabular-nums" style={{ color: "#1a2e28" }}>{displayValue}</div>
         <div className="mt-3 h-px" style={{ background: `linear-gradient(90deg, ${accent}, transparent)` }} />
         <div className="mt-5 grid grid-cols-[1fr_92px] items-end gap-4">
           <div>
             <div className="mb-1 flex items-center justify-between gap-2 text-xs">
-              <span style={{ color: "#8a7080" }}>{graphLabel}</span>
-              <span className="font-semibold tabular-nums" style={{ color: "#f5f0e8" }}>{graphValue}</span>
+              <span style={{ color: "#6a9080" }}>{graphLabel}</span>
+              <span className="font-semibold tabular-nums" style={{ color: "#1a2e28" }}>{graphValue}</span>
             </div>
-            <div className="h-2 overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.06)" }}>
+            <div className="h-2 overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.7)" }}>
               <div className="h-full rounded-full transition-all duration-700"
                 style={{ width: `${Math.max(pct, 4)}%`, background: `linear-gradient(90deg, ${accent}, oklch(75% 0.14 80))`, boxShadow: `0 0 18px ${accent}` }} />
             </div>
@@ -250,7 +250,7 @@ function KpiCard({ icon, label, value, formatAs, accent, graphLabel, graphValue,
                 <stop offset="100%" stopColor="oklch(75% 0.14 80)" stopOpacity="0.9" />
               </linearGradient>
             </defs>
-            <path d="M2 38H90" stroke="rgba(255,255,255,0.07)" strokeWidth="1" />
+            <path d="M2 38H90" stroke="rgba(80,160,130,0.2)" strokeWidth="1" />
             <polyline points={sparkPts} fill="none" stroke={`url(#${gradId})`} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
@@ -264,9 +264,9 @@ function CompactList({ title, subtitle, bottles, accentColor }: {
 }) {
   return (
     <Card overflow>
-      <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: "1px solid rgba(80,160,130,0.2)" }}>
         <div>
-          <p className="font-semibold" style={{ color: "#f5f0e8" }}>{title}</p>
+          <p className="font-semibold" style={{ color: "#1a2e28" }}>{title}</p>
           <p className="text-xs" style={{ color: accentColor }}>{subtitle}</p>
         </div>
         <span className="flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold tabular-nums"
@@ -290,19 +290,19 @@ function CompactList({ title, subtitle, bottles, accentColor }: {
                 <td className="px-5 py-3">
                   <Link href={`/bottles/${b.id}`}
                     className="font-semibold transition-colors duration-150 hover:text-[--accent]"
-                    style={{ color: "#f5f0e8", ["--accent" as string]: accentColor } as React.CSSProperties}>
+                    style={{ color: "#1a2e28", ["--accent" as string]: accentColor } as React.CSSProperties}>
                     {b.producer}
                   </Link>
-                  <div className="mt-0.5 text-xs" style={{ color: "#8a7080" }}>
+                  <div className="mt-0.5 text-xs" style={{ color: "#6a9080" }}>
                     {b.wineName}{b.vintage ? ` · ${b.vintage}` : ""}
                   </div>
                 </td>
-                <td className="px-3 py-3 text-xs" style={{ color: "#b09aa8" }}>{b.type}</td>
-                <td className="px-3 py-3 font-bold tabular-nums" style={{ color: "#f5f0e8" }}>{b.quantity}</td>
-                <td className="px-3 py-3 text-xs" style={{ color: "#b09aa8" }}>{b.drinkingWindow}</td>
+                <td className="px-3 py-3 text-xs" style={{ color: "#4a7060" }}>{b.type}</td>
+                <td className="px-3 py-3 font-bold tabular-nums" style={{ color: "#1a2e28" }}>{b.quantity}</td>
+                <td className="px-3 py-3 text-xs" style={{ color: "#4a7060" }}>{b.drinkingWindow}</td>
               </tr>
             )) : (
-              <tr><td colSpan={4} className="px-5 py-8 text-center text-sm" style={{ color: "#5a4550" }}>No bottles in this list.</td></tr>
+              <tr><td colSpan={4} className="px-5 py-8 text-center text-sm" style={{ color: "#8aaa9a" }}>No bottles in this list.</td></tr>
             )}
           </tbody>
         </table>
@@ -313,12 +313,12 @@ function CompactList({ title, subtitle, bottles, accentColor }: {
 
 function TypeStack({ counts, total }: { counts: { type: string; count: number }[]; total: number }) {
   if (!total) return (
-    <div className="h-3 overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.06)" }}>
-      <div className="h-full w-full" style={{ background: "linear-gradient(90deg,rgba(255,255,255,0.05),rgba(255,255,255,0.12))" }} />
+    <div className="h-3 overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.7)" }}>
+      <div className="h-full w-full" style={{ background: "linear-gradient(90deg,rgba(80,160,130,0.15),rgba(80,160,130,0.3))" }} />
     </div>
   );
   return (
-    <div className="flex h-3 overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.06)" }}>
+    <div className="flex h-3 overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.7)" }}>
       {counts.filter((i) => i.count > 0).map((i) => (
         <div key={i.type} title={`${i.type}: ${i.count}`}
           style={{ width: `${(i.count / total) * 100}%`, background: typeColor(i.type) }} />
@@ -339,29 +339,29 @@ function AnalyticsCard({ icon, title, rows, empty, accent }: {
     <Card className="p-5">
       <div className="mb-4 flex items-center gap-2.5" style={{ color: accent }}>
         {icon}
-        <span className="section-title-text font-semibold" style={{ color: "#d4af37" }}>{title}</span>
+        <span className="section-title-text font-semibold" style={{ color: "#3a7060" }}>{title}</span>
       </div>
       {rows.length ? (
         <div className="space-y-3">
           {rows.map((row) => (
             <div key={row.label} className="grid grid-cols-[96px_1fr_76px] items-center gap-3 text-sm">
-              <span className="truncate" style={{ color: "#b09aa8" }}>{row.label}</span>
-              <div className="h-2 overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.06)" }}>
+              <span className="truncate" style={{ color: "#4a7060" }}>{row.label}</span>
+              <div className="h-2 overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.7)" }}>
                 <div
                   className="h-full rounded-full"
                   style={{
                     width: `${Math.max((row.value / max) * 100, 4)}%`,
-                    background: `linear-gradient(90deg, ${accent}, #d4af37)`,
+                    background: `linear-gradient(90deg, ${accent}, #3a7060)`,
                     boxShadow: `0 0 16px ${accent}55`
                   }}
                 />
               </div>
-              <span className="text-right text-xs font-semibold tabular-nums" style={{ color: "#f5f0e8" }}>{row.display}</span>
+              <span className="text-right text-xs font-semibold tabular-nums" style={{ color: "#1a2e28" }}>{row.display}</span>
             </div>
           ))}
         </div>
       ) : (
-        <p className="text-sm" style={{ color: "#8a7080" }}>{empty}</p>
+        <p className="text-sm" style={{ color: "#6a9080" }}>{empty}</p>
       )}
     </Card>
   );
@@ -377,7 +377,7 @@ function typeColor(type: string) {
     Sparkling: "oklch(82% 0.10 85)", Rose: "oklch(62% 0.18 0)",
     Fortified: "oklch(45% 0.12 40)", Dessert: "oklch(65% 0.18 300)"
   };
-  return map[type] ?? "#8a7080";
+  return map[type] ?? "#4a7060";
 }
 
 function makeSparklinePoints(percent: number) {
@@ -385,4 +385,3 @@ function makeSparklinePoints(percent: number) {
   const vals = [base*0.35, base*0.52, base*0.45, base*0.70, base*0.62, base*0.86, base].map((v) => Math.max(v, 3));
   return vals.map((v, i) => `${4+i*14},${(38-(v/100)*32).toFixed(1)}`).join(" ");
 }
-

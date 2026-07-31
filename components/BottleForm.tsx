@@ -205,8 +205,8 @@ export function BottleForm({ mode, bottleId }: { mode: "create" | "edit"; bottle
       <div className="flex items-center justify-center py-32">
         <div className="text-center">
           <div className="mx-auto mb-4 h-12 w-12 rounded-full border-2 border-t-transparent animate-spin"
-            style={{ borderColor: "rgba(139,26,26,0.3)", borderTopColor: "#8b1a1a" }} />
-          <p className="text-sm" style={{ color: "#8a7080" }}>Loading bottle…</p>
+            style={{ borderColor: "rgba(80,160,130,0.2)", borderTopColor: "#3a7060" }} />
+          <p className="text-sm" style={{ color: "#6a9080" }}>Loading bottle…</p>
         </div>
       </div>
     );
@@ -218,7 +218,7 @@ export function BottleForm({ mode, bottleId }: { mode: "create" | "edit"; bottle
       <section className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <span className="label">{mode === "edit" ? "Edit bottle" : "Add bottle"}</span>
-          <h1 className="mt-1 font-display text-4xl font-bold" style={{ color: "#f5f0e8" }}>
+          <h1 className="mt-1 font-display text-4xl font-bold" style={{ color: "#1a2e28" }}>
             {mode === "edit" ? form.wineName || "Bottle details" : "New cellar entry"}
           </h1>
           <div className="mt-2 h-0.5 w-16" style={{ background: "linear-gradient(90deg, #8b1a1a, transparent)" }} />
@@ -244,7 +244,7 @@ export function BottleForm({ mode, bottleId }: { mode: "create" | "edit"; bottle
       {/* Error */}
       {error && (
         <div className="rounded-xl px-4 py-3 text-sm font-medium"
-          style={{ background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.3)", color: "#fca5a5" }}>
+          style={{ background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.3)", color: "#b91c1c" }}>
           {error}
         </div>
       )}
@@ -261,12 +261,12 @@ export function BottleForm({ mode, bottleId }: { mode: "create" | "edit"; bottle
             {photoPreview ? (
               <img src={photoPreview} alt="Wine label preview"
                 className="max-h-[280px] w-auto rounded-lg object-contain"
-                style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.5)" }} />
+                style={{ boxShadow: "0 8px 30px rgba(0,0,0,0.15)" }} />
             ) : (
-              <span className="flex flex-col items-center gap-3" style={{ color: "#5a4550" }}>
+              <span className="flex flex-col items-center gap-3" style={{ color: "#8aaa9a" }}>
                 <ImagePlus size={40} />
                 <span>
-                  <span className="block text-sm font-semibold" style={{ color: "#b09aa8" }}>Drop label photo</span>
+                  <span className="block text-sm font-semibold" style={{ color: "#4a7060" }}>Drop label photo</span>
                   <span className="block text-xs mt-0.5">or click to choose file</span>
                 </span>
               </span>
@@ -278,12 +278,12 @@ export function BottleForm({ mode, bottleId }: { mode: "create" | "edit"; bottle
             <input className="field mt-1.5" value={form.photoUrl} onChange={(e) => update("photoUrl", e.target.value)} placeholder="https://…" />
           </label>
           {file && (
-            <p className="flex items-center gap-2 text-sm" style={{ color: "#b09aa8" }}>
+            <p className="flex items-center gap-2 text-sm" style={{ color: "#4a7060" }}>
               <UploadCloud size={15} />{file.name}
             </p>
           )}
           {mode === "edit" ? (
-            <div className="space-y-3 rounded-xl p-3" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
+            <div className="space-y-3 rounded-xl p-3" style={{ background: "rgba(255,255,255,0.7)", border: "1px solid rgba(80,160,130,0.2)" }}>
               <div className="flex items-center justify-between gap-3">
                 <span className="label">Additional photos</span>
                 <label className="btn-secondary cursor-pointer">
@@ -296,20 +296,20 @@ export function BottleForm({ mode, bottleId }: { mode: "create" | "edit"; bottle
                   {extraPhotos.map((photo) => (
                     <div key={photo.id} className="group relative">
                       <button type="button" className="block w-full" onClick={() => setActivePhotoUrl(photo.url)} aria-label="Preview photo">
-                        <img src={photo.url} alt="" className="aspect-[3/4] w-full rounded-lg object-cover" style={{ border: activePhotoUrl === photo.url ? "1px solid #d4af37" : "1px solid rgba(255,255,255,0.08)" }} />
+                        <img src={photo.url} alt="" className="aspect-[3/4] w-full rounded-lg object-cover" style={{ border: activePhotoUrl === photo.url ? "1px solid #3a7060" : "1px solid rgba(80,160,130,0.2)" }} />
                       </button>
-                      <button type="button" className="absolute right-1 top-1 rounded-full p-1 opacity-90 transition-opacity hover:opacity-100" style={{ background: "rgba(20,12,13,0.88)", color: "#f5f0e8" }} onClick={() => removeAdditionalPhoto(photo)} aria-label="Remove photo">
+                      <button type="button" className="absolute right-1 top-1 rounded-full p-1 opacity-90 transition-opacity hover:opacity-100" style={{ background: "rgba(255,255,255,0.88)", color: "#1a2e28" }} onClick={() => removeAdditionalPhoto(photo)} aria-label="Remove photo">
                         <X size={12} />
                       </button>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-xs" style={{ color: "#8a7080" }}>Add side labels, back labels, or receipt photos after saving this bottle.</p>
+                <p className="text-xs" style={{ color: "#6a9080" }}>Add side labels, back labels, or receipt photos after saving this bottle.</p>
               )}
             </div>
           ) : (
-            <p className="text-xs" style={{ color: "#8a7080" }}>Additional photos can be added after saving.</p>
+            <p className="text-xs" style={{ color: "#6a9080" }}>Additional photos can be added after saving.</p>
           )}
         </div>
 
@@ -377,8 +377,8 @@ export function BottleForm({ mode, bottleId }: { mode: "create" | "edit"; bottle
       {/* Consumption history */}
       {loaded?.consumptionLogs?.length ? (
         <Card overflow>
-          <div className="px-5 py-4" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-            <h2 className="font-semibold" style={{ color: "#f5f0e8" }}>Bottle history</h2>
+          <div className="px-5 py-4" style={{ borderBottom: "1px solid rgba(80,160,130,0.2)" }}>
+            <h2 className="font-semibold" style={{ color: "#1a2e28" }}>Bottle history</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="min-w-full text-left text-sm wine-table">
@@ -394,7 +394,7 @@ export function BottleForm({ mode, bottleId }: { mode: "create" | "edit"; bottle
                   <tr key={log.id}>
                     <td className="px-5 py-3">{new Date(log.date).toLocaleDateString()}</td>
                     <td className="px-5 py-3">{log.quantity}</td>
-                    <td className="px-5 py-3" style={{ color: "#8a7080" }}>{log.note || "—"}</td>
+                    <td className="px-5 py-3" style={{ color: "#6a9080" }}>{log.note || "—"}</td>
                   </tr>
                 ))}
               </tbody>
@@ -409,9 +409,9 @@ export function BottleForm({ mode, bottleId }: { mode: "create" | "edit"; bottle
 function SectionTitle({ icon, title }: { icon: React.ReactNode; title: string }) {
   return (
     <div className="flex items-center gap-2.5">
-      <span style={{ color: "#9a7c22" }}>{icon}</span>
-      <span className="section-title-text font-semibold transition-all duration-300" style={{ color: "#d4af37" }}>{title}</span>
-      <div className="flex-1 h-px" style={{ background: "rgba(212,175,55,0.12)" }} />
+      <span style={{ color: "#4a8070" }}>{icon}</span>
+      <span className="section-title-text font-semibold transition-all duration-300" style={{ color: "#3a7060" }}>{title}</span>
+      <div className="flex-1 h-px" style={{ background: "rgba(58,112,96,0.2)" }} />
     </div>
   );
 }

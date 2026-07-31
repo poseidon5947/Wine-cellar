@@ -68,7 +68,7 @@ export function ImportClient() {
       <section className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <span className="label">Data import</span>
-          <h1 className="mt-1 font-display text-4xl font-bold" style={{ color: "#f5f0e8" }}>CSV Import</h1>
+          <h1 className="mt-1 font-display text-4xl font-bold" style={{ color: "#1a2e28" }}>CSV Import</h1>
           <div className="mt-2 h-0.5 w-16" style={{ background: "linear-gradient(90deg, #8b1a1a, transparent)" }} />
         </div>
       </section>
@@ -80,11 +80,11 @@ export function ImportClient() {
             className="flex min-h-[220px] cursor-pointer flex-col items-center justify-center rounded-xl p-6 text-center transition-all duration-200 photo-drop"
             onDragOver={(e) => e.preventDefault()}
           >
-            <FileSpreadsheet size={44} style={{ color: rows.length ? "#d4af37" : "#5a4550" }} />
-            <span className="mt-3 block text-sm font-semibold" style={{ color: "#f5f0e8" }}>
+            <FileSpreadsheet size={44} style={{ color: rows.length ? "#3a7060" : "#8aaa9a" }} />
+            <span className="mt-3 block text-sm font-semibold" style={{ color: "#1a2e28" }}>
               {rows.length ? `${rows.length} rows loaded` : "Choose CSV from Google Sheets"}
             </span>
-            <span className="mt-1 block text-xs" style={{ color: "#8a7080" }}>
+            <span className="mt-1 block text-xs" style={{ color: "#6a9080" }}>
               {rows.length ? `${headers.length} columns detected` : "Header row required"}
             </span>
             <input className="sr-only" type="file" accept=".csv,text/csv"
@@ -92,18 +92,18 @@ export function ImportClient() {
           </label>
 
           <Card className="p-4 text-sm space-y-3">
-            <p className="font-semibold" style={{ color: "#d4af37" }}>Accepted values</p>
+            <p className="font-semibold" style={{ color: "#3a7060" }}>Accepted values</p>
             <div>
               <span className="label">Type</span>
-              <p className="mt-0.5 text-xs leading-relaxed" style={{ color: "#b09aa8" }}>{WINE_TYPES.join(", ")}</p>
+              <p className="mt-0.5 text-xs leading-relaxed" style={{ color: "#4a7060" }}>{WINE_TYPES.join(", ")}</p>
             </div>
             <div>
               <span className="label">Size</span>
-              <p className="mt-0.5 text-xs leading-relaxed" style={{ color: "#b09aa8" }}>{BOTTLE_SIZES.join(", ")}</p>
+              <p className="mt-0.5 text-xs leading-relaxed" style={{ color: "#4a7060" }}>{BOTTLE_SIZES.join(", ")}</p>
             </div>
             <div>
               <span className="label">Status</span>
-              <p className="mt-0.5 text-xs leading-relaxed" style={{ color: "#b09aa8" }}>{BOTTLE_STATUSES.join(", ")}</p>
+              <p className="mt-0.5 text-xs leading-relaxed" style={{ color: "#4a7060" }}>{BOTTLE_STATUSES.join(", ")}</p>
             </div>
           </Card>
         </div>
@@ -112,14 +112,14 @@ export function ImportClient() {
         <Card className="p-5">
           {!headers.length ? (
             <div className="flex flex-col items-center justify-center py-16 text-center">
-              <FileSpreadsheet size={48} style={{ color: "#2d1520" }} />
-              <p className="mt-3 text-sm" style={{ color: "#5a4550" }}>Upload a CSV file to begin mapping columns</p>
+              <FileSpreadsheet size={48} style={{ color: "#8aaa9a" }} />
+              <p className="mt-3 text-sm" style={{ color: "#8aaa9a" }}>Upload a CSV file to begin mapping columns</p>
             </div>
           ) : (
             <div className="space-y-5">
               <div>
-                <h2 className="font-semibold" style={{ color: "#d4af37" }}>Column mapping</h2>
-                <p className="mt-0.5 text-xs" style={{ color: "#8a7080" }}>Map your spreadsheet columns to bottle fields</p>
+                <h2 className="font-semibold" style={{ color: "#3a7060" }}>Column mapping</h2>
+                <p className="mt-0.5 text-xs" style={{ color: "#6a9080" }}>Map your spreadsheet columns to bottle fields</p>
               </div>
               <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                 {bottleFields.map((field) => (
@@ -132,8 +132,8 @@ export function ImportClient() {
                   </label>
                 ))}
               </div>
-              <div className="flex flex-wrap items-center justify-between gap-3 pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-                <p className="text-sm" style={{ color: requiredMapped ? "#86efac" : "#8a7080" }}>
+              <div className="flex flex-wrap items-center justify-between gap-3 pt-4" style={{ borderTop: "1px solid rgba(80,160,130,0.2)" }}>
+                <p className="text-sm" style={{ color: requiredMapped ? "#15803d" : "#6a9080" }}>
                   {requiredMapped ? "✓ Ready to import" : "Producer and wine name must be mapped"}
                 </p>
                 <button className="btn-primary" disabled={!requiredMapped || loading} onClick={importRows}>
@@ -151,7 +151,7 @@ export function ImportClient() {
           style={{
             background: messageType === "success" ? "rgba(34,197,94,0.1)" : "rgba(239,68,68,0.1)",
             border: `1px solid ${messageType === "success" ? "rgba(34,197,94,0.3)" : "rgba(239,68,68,0.3)"}`,
-            color: messageType === "success" ? "#86efac" : "#fca5a5"
+            color: messageType === "success" ? "#15803d" : "#b91c1c"
           }}>
           {messageType === "success" ? <CheckCircle2 size={16} /> : <AlertCircle size={16} />}
           {message}
@@ -161,9 +161,9 @@ export function ImportClient() {
       {/* Preview table */}
       {previewRows.length > 0 && (
         <Card overflow>
-          <div className="px-5 py-4" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-            <h2 className="font-semibold" style={{ color: "#f5f0e8" }}>CSV preview</h2>
-            <p className="mt-0.5 text-xs" style={{ color: "#8a7080" }}>First {previewRows.length} rows</p>
+          <div className="px-5 py-4" style={{ borderBottom: "1px solid rgba(80,160,130,0.2)" }}>
+            <h2 className="font-semibold" style={{ color: "#1a2e28" }}>CSV preview</h2>
+            <p className="mt-0.5 text-xs" style={{ color: "#6a9080" }}>First {previewRows.length} rows</p>
           </div>
           <div className="overflow-x-auto">
             <table className="min-w-full text-left text-sm wine-table">
@@ -174,7 +174,7 @@ export function ImportClient() {
                 {previewRows.map((row, i) => (
                   <tr key={i}>
                     {headers.map((h) => (
-                      <td key={h} className="max-w-[200px] truncate px-3 py-2.5" style={{ color: "#b09aa8" }}>
+                      <td key={h} className="max-w-[200px] truncate px-3 py-2.5" style={{ color: "#4a7060" }}>
                         {String(row[h] ?? "")}
                       </td>
                     ))}

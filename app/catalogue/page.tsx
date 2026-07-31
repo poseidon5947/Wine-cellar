@@ -1,16 +1,10 @@
-import { CatalogueClient } from "@/components/CatalogueClient";
-import { CatalogueBg } from "@/components/CatalogueBg";
 import { Suspense } from "react";
+import { CatalogueClient } from "@/components/CatalogueClient";
 
 export default function CataloguePage() {
   return (
-    <>
-      <CatalogueBg />
-      <div className="catalogue-page-content">
-        <Suspense fallback={null}>
-          <CatalogueClient />
-        </Suspense>
-      </div>
-    </>
+    <Suspense>
+      <CatalogueClient />
+    </Suspense>
   );
 }

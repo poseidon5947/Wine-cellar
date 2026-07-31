@@ -142,74 +142,18 @@ button, input, select, textarea {
 
 /* Layer 1 — crisp 1.5px bright beam ring */
 .glass-card::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: calc(0.75rem + 1px);
-  padding: 1px;
-  background: conic-gradient(
-    from var(--border-angle, 0deg),
-    transparent            0%,
-    transparent           25%,
-    rgba(139, 26, 26, 0.2)  30%,
-    rgba(212,175, 55, 0.5)  40%,
-    rgba(240,208, 96, 0.9)  46%,
-    rgba(255,255,255, 0.95) 50%,
-    rgba(240,208, 96, 0.9)  54%,
-    rgba(212,175, 55, 0.5)  60%,
-    rgba(139, 26, 26, 0.2)  70%,
-    transparent           75%,
-    transparent          100%
-  );
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  z-index: 2;
-  animation: border-spin 3.5s linear infinite;
+  content: none;
 }
 
 /* Layer 2 — blurred glow bloom (DOM span inside every glass-card) */
 .border-beam-glow {
-  position: absolute;
-  inset: -6px;
-  border-radius: calc(0.75rem + 6px);
-  padding: 6px;
-  background: conic-gradient(
-    from var(--border-angle, 0deg),
-    transparent              0%,
-    transparent             26%,
-    rgba(139,  26,  26, 0.0)  30%,
-    rgba(178,  34,  34, 0.25) 38%,
-    rgba(212, 175,  55, 0.50) 44%,
-    rgba(240, 208,  96, 0.70) 50%,
-    rgba(212, 175,  55, 0.50) 56%,
-    rgba(178,  34,  34, 0.25) 62%,
-    rgba(139,  26,  26, 0.0)  70%,
-    transparent             74%,
-    transparent            100%
-  );
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  z-index: 1;
-  filter: blur(5px);
-  animation: border-spin 3.5s linear infinite;
+  display: none;
 }
 
 @property --border-angle {
   syntax: '<angle>';
   inherits: true;
   initial-value: 0deg;
-}
-
-@keyframes border-spin {
-  to { --border-angle: 360deg; }
 }
 
 /* Cards that contain overflow content (tables, images) clip their inner children */

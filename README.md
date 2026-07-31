@@ -38,6 +38,7 @@ CRITIC_LOOKUP_API_KEY=""
 ```
 
 - `DATABASE_URL`: production Postgres connection string from Vercel Postgres, Neon, Supabase, Railway, or another hosted Postgres provider.
+- The URL must start with `postgresql://` or `postgres://`. If Vercel/Neon creates `POSTGRES_URL` or `POSTGRES_PRISMA_URL` instead, the build/runtime will use that automatically.
 - `APP_PASSWORD`: password for the single-user login screen.
 - `SESSION_SECRET`: random value stored in the auth cookie after login.
 - `BLOB_READ_WRITE_TOKEN`: Vercel Blob token for label-photo uploads.

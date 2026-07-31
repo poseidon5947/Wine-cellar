@@ -1,5 +1,16 @@
 import { PrismaClient } from "@prisma/client";
 
+if (process.env.WINE_CELLAR_DESKTOP_RUNTIME !== "1") {
+  const databaseUrl = firstPostgresUrl([
+    process.env.DATABASE_URL,
+    process.env.POSTGRES_PRISMA_URL,
+    process.env.POSTGRES_URL,
+    process.env.POSTGRES_URL_NON_POOLING,
+    process.env.DATABASE_URL_UNPOOLED
+  ]);
+  if (databaseUrl) process.env.DATABASE_URL = databaseUrl;
+}
+
 const globalForPrisma = globalThis as unknown as {
   prisma?: PrismaClient;
   desktopDbReady?: Promise<void>;
@@ -100,3 +111,7 @@ export const prisma = basePrisma.$extends({
 }) as PrismaClient;
 
 if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = basePrisma;
+
+function firstPostgresUrl(values: Array<string | undefined>) {
+  return values.find((value) => typeof value === "string" && /^(postgresql|postgres):\/\//.test(value));
+}

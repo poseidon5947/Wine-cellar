@@ -15,8 +15,6 @@ type ComboFieldProps = {
   placeholder?: string;
 };
 
-const suggestionCache = new Map<SuggestionField, string[]>();
-
 const defaultSuggestions: Record<SuggestionField, string[]> = {
   producer: [],
   wineName: [],
@@ -47,26 +45,19 @@ function mergeSuggestions(field: SuggestionField, values: string[]) {
 }
 
 export function ComboField({ field, label, value, onChange, required, placeholder }: ComboFieldProps) {
-  const [suggestions, setSuggestions] = useState<string[]>(() => suggestionCache.get(field) || []);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
   const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(!suggestionCache.has(field));
+  const [loading, setLoading] = useState(true);
   const blurTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    if (suggestionCache.has(field)) {
-      setSuggestions(suggestionCache.get(field) || []);
-      setLoading(false);
-      return;
-    }
-
     let cancelled = false;
     setLoading(true);
-    fetch(`/api/suggestions?field=${field}`, { cache: "force-cache" })
+    fetch(`/api/suggestions?field=${field}`, { cache: "no-store" })
       .then((response) => response.json())
       .then((body) => {
         const values = Array.isArray(body.values) ? body.values.filter((item: unknown) => typeof item === "string") : [];
         const merged = mergeSuggestions(field, values);
-        suggestionCache.set(field, merged);
         if (!cancelled) setSuggestions(merged);
       })
       .catch(() => {

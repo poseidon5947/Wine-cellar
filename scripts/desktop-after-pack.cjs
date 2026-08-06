@@ -7,7 +7,10 @@ exports.default = async function afterPack(context) {
   const destination = path.join(appDir, "node_modules", ".prisma");
 
   fs.rmSync(destination, { force: true, recursive: true });
-  fs.cpSync(source, destination, { recursive: true });
+  fs.cpSync(source, destination, {
+    recursive: true,
+    filter: (sourcePath) => !/^query_engine-windows\.dll\.node\.tmp\d+$/.test(path.basename(sourcePath))
+  });
 
   for (const envFile of [".env", ".env.local", ".env.production"]) {
     fs.rmSync(path.join(appDir, ".next", "standalone", envFile), { force: true });

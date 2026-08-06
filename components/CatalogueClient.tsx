@@ -280,9 +280,9 @@ export function CatalogueClient() {
               <FilterInput label="Others" value={filters.others} onChange={(v) => updateFilter("others", v)} />
             </div>
             <div className="grid gap-3 sm:grid-cols-5">
-              <FilterInput label="Halliday" type="number" value={filters.hallidayScore} onChange={(v) => updateFilter("hallidayScore", v)} />
               <FilterInput label="Hook" type="number" value={filters.hookScore} onChange={(v) => updateFilter("hookScore", v)} />
-              <FilterInput label="RP" type="number" value={filters.rpScore} onChange={(v) => updateFilter("rpScore", v)} />
+              <FilterInput label="Halliday" type="number" value={filters.hallidayScore} onChange={(v) => updateFilter("hallidayScore", v)} />
+              <FilterInput label="Wine Front" type="number" value={filters.rpScore} onChange={(v) => updateFilter("rpScore", v)} />
               <FilterInput label="Larkin" type="number" value={filters.larkinScore} onChange={(v) => updateFilter("larkinScore", v)} />
               <FilterInput label="My score" type="number" value={filters.myScore} onChange={(v) => updateFilter("myScore", v)} />
             </div>
@@ -388,8 +388,8 @@ export function CatalogueClient() {
                   </td>
                   <td className="px-3 py-3"><StatusChip status={b.drinkStatus} /></td>
                   <td className="px-3 py-3 text-xs" style={{ color: "#8aaa9a" }}>
-                    <div>H {b.hallidayScore ?? "—"} · Hk {b.hookScore ?? "—"}</div>
-                    <div>RP {b.rpScore ?? "—"} · L {b.larkinScore ?? "—"} · My {b.myScore ?? "—"}</div>
+                    <div>Hook {b.hookScore ?? "—"} · Halliday {b.hallidayScore ?? "—"}</div>
+                    <div>Wine Front {b.rpScore ?? "—"} · Larkin {b.larkinScore ?? "—"} · My {b.myScore ?? "—"}</div>
                   </td>
                   <td className="px-3 py-3" onClick={(e) => e.stopPropagation()}>
                     <button className="btn-secondary whitespace-nowrap px-3 py-1.5 text-xs" disabled={b.quantity < 1} onClick={(e) => drinkOne(e, b.id)}>

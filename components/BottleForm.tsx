@@ -347,9 +347,9 @@ export function BottleForm({ mode, bottleId }: { mode: "create" | "edit"; bottle
           <Card className="p-5">
             <SectionTitle icon={<Award size={16} />} title="Critic scores" />
             <div className="mt-4 grid gap-4 sm:grid-cols-5">
-              <Field label="Halliday" type="number" value={form.hallidayScore} onChange={(v) => update("hallidayScore", v)} />
               <Field label="Hook" type="number" value={form.hookScore} onChange={(v) => update("hookScore", v)} />
-              <Field label="RP" type="number" value={form.rpScore} onChange={(v) => update("rpScore", v)} />
+              <Field label="Halliday" type="number" value={form.hallidayScore} onChange={(v) => update("hallidayScore", v)} />
+              <Field label="Wine Front" type="number" value={form.rpScore} onChange={(v) => update("rpScore", v)} />
               <Field label="Larkin" type="number" value={form.larkinScore} onChange={(v) => update("larkinScore", v)} />
               <Field label="My score" type="number" value={form.myScore} onChange={(v) => update("myScore", v)} />
             </div>

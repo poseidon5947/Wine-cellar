@@ -11,7 +11,7 @@ const bottleFields = [
   "region", "country", "alcoholPercent", "bottleSize", "quantity",
   "storageLocation", "purchaseDate", "purchasePrice",
   "drinkingWindowStart", "drinkingWindowEnd", "status", "personalRating",
-  "notes", "myNotes", "hallidayScore", "hookScore", "rpScore", "larkinScore", "myScore", "others"
+  "notes", "myNotes", "hookScore", "hallidayScore", "rpScore", "larkinScore", "myScore", "others"
 ] as const;
 
 type BottleField = (typeof bottleFields)[number];
@@ -201,5 +201,6 @@ function suggestMappings(headers: string[]) {
 }
 
 function labelFor(field: string) {
+  if (field === "rpScore") return "Wine Front";
   return field.replace(/([A-Z])/g, " $1").replace(/^./, (l) => l.toUpperCase());
 }

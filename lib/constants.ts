@@ -103,7 +103,7 @@ export const COUNTRIES = [
   "Other"
 ] as const;
 
-export const SCORE_FIELDS = ["hallidayScore", "hookScore", "rpScore", "larkinScore", "myScore"] as const;
+export const SCORE_FIELDS = ["hookScore", "hallidayScore", "rpScore", "larkinScore", "myScore"] as const;
 
 export const CATALOGUE_SORT_FIELDS = [
   "producer",
@@ -114,8 +114,8 @@ export const CATALOGUE_SORT_FIELDS = [
   "personalRating",
   "drinkingWindowStart",
   "drinkingWindowEnd",
-  "hallidayScore",
   "hookScore",
+  "hallidayScore",
   "rpScore",
   "larkinScore",
   "myScore",

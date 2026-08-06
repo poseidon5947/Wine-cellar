@@ -203,9 +203,6 @@ button, input, select, textarea { font: inherit; }
 /* ── KPI card ── */
 .kpi-card { position: relative; overflow: visible; }
 
-/* ── Tilt card (3D hover) ── */
-.tilt-card { cursor: default; transform-origin: center center; }
-
 /* ── Nav link ── */
 .nav-link {
   position: relative;
@@ -319,12 +316,6 @@ button, input, select, textarea { font: inherit; }
 .kpi-banner-img {
   opacity: 0.70;
 }
-.kpi-card:hover .kpi-banner-img,
-.tilt-card:hover .kpi-banner-img {
-  opacity: 0.95 !important;
-  filter: drop-shadow(0 2px 8px rgba(139,26,26,0.20)) !important;
-}
-
 /* ═══════════════════════════════════════
    PAGE-SPECIFIC CARD OVERRIDES
    All pages now share the same light glass style
